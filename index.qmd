@@ -43,7 +43,7 @@ The content of Term 1 is divided into 4 Chapters, some of which will be longer t
 Lectures will primarily be used to present new material, but will also feature computer demonstrations of the algorithms and models presented. As such, students are encouraged to bring along their own laptops to both lectures and problem classes so that they can also run the examples themselves. The MATLAB code for all of the examples will be available on the course GitHub page:
 
 <center>
-[https://github.com/patterd2/MATH4411_Adv_Math_Bio](https://github.com/patterd2/MATH4411_Adv_Math_Bio)
+[https://github.com/AndrewLKrause/MATH4411_Adv_Math_Bio](https://github.com/AndrewLKrause/MATH4411_Adv_Math_Bio)
 </center>
 
 You don't need any prior coding experience in MATLAB to run this code; mostly you will just want to tweak parameter values, analyse the output of the code, and compare the algorithms to the pseudocode in the lecture notes.
