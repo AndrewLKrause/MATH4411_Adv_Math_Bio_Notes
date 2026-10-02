@@ -4,8 +4,8 @@ project:
   
 book:
   title: "Advanced Mathematical Biology IV (MATH4411)"
-  author: "Dr Denis Patterson, Durham University"
-  date: "June 2025"
+  author: "Dr Andrew Krause, Durham University"
+  date: "October 2026"
   #references: references.bib
   chapters:
     - index.qmd
