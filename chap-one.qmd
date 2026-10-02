@@ -38,7 +38,7 @@ $$
 Can you give an intuitive explanation of why this is the case? Since it is posed in continuous time, $A$ is formally called a **Markov jump process**.
 :::
 
-Deferring the mathematical analysis of this process for now, how could we simulate a sample path of the process to find the number of molecules of $A$ remaining at time $t$ given $A(0) = n_0$? We could try to find a chemical with reaction rate $k$ and conduct the actual experiment, or we can simulate the process on a computer! To this end, we may introduce the following "naive" stochastic simulation algorithm (SSA) for the process:
+Deferring the mathematical analysis of this process for now, how could we simulate a sample path of the process to find the number of molecules of $A$ remaining at time $t$ given $A(0) = n_0$? We could try to find a chemical with reaction rate $k$ and conduct the actual experiment, or we can simulate the process on a computer! Instead of an infinitesimal time step $dt$, we consider a fixed time step $\Delta t > 0$ which is sufficiently small to approximate the process. We then introduce the following "naive" stochastic simulation algorithm (SSA) for the process:
 
 ---
 
@@ -86,7 +86,7 @@ The deterministic model of the mean behaviour is strictly decreasing in time and
 It is worth noting that the naive SSA is very inefficient in this example as we chose our parameters to ensure a very small probability of multiple reactions occurring in $[t, t+ \Delta t)$. In fact, we had $\mathbb{P}[\text{one reaction in }[t, t+\Delta t)] \approx 0.01$. But this means that step 1 is mostly wasted as we generate lots of random numbers that we don't use! We can be more efficient than that...
 
 ::: {.doit #eggen1 style="font-size:1.0em; font-family:mainfont;"}
-Open the course [Github page](https://github.com/patterd2/MATH4411_Adv_Math_Bio) and try running the MATLAB script:  
+Open the course [Github page](https://github.com/AndrewLKrause/MATH4411_Adv_Math_Bio) and try running the MATLAB script:  
 `CH1_naive_SSA_degradation.m`
 
 1. How does the difference between the deterministic and stochastic means change as you vary the number of realisations?  
@@ -192,7 +192,7 @@ Thus, if $U \sim U([0,1])$, then $\log(1/(1-U))/\lambda \sim \text{Exp}(\lambda)
 2. Apply the inverse transform method to the Pareto distribution, which has PDF given by  
 $$
 f(x) = \begin{cases}
-\frac{\alpha\,\beta^\alpha}{x^{\alpha+1}}, & x \geq \beta 0,\\
+\frac{\alpha\,\beta^\alpha}{x^{\alpha+1}}, & x \geq \beta,\\
 0, & \text{else}.
 \end{cases}
 $$
@@ -215,12 +215,12 @@ At time $t = 0$, set $A(0) = n_0$, then:
 
 ---
 
-@fig-more_efficient below shows the results of some simulations of the degradation process using the more efficient SSA. There is a notable speed-up compared to the naive SSA when plotting large numbers of realisations. We take advantage of this to illustrate further differences between the deterministic model and stochastic one in the right panel of @fig-more_efficient; this panel shows a comparison between the estimated PMF of the process at $t = 10$ and the deterministic mean at the same time. We used $200$ paths of the process for this plot but more are probably required to fully capture the PMF of even this simple process, further highlighting the need for efficient SSAs! 
+@fig-more_efficient below shows the results of some simulations of the degradation process using the more efficient SSA. There is a notable speed-up compared to the naive SSA when plotting large numbers of realisations. We take advantage of this to illustrate further differences between the deterministic model and stochastic one in the right panel of @fig-more_efficient; this panel shows a comparison between the estimated probability mass function (PMF) of the process at $t = 10$ and the deterministic mean at the same time. We used $200$ paths of the process for this plot but more are probably required to fully capture the PMF of even this simple process, further highlighting the need for efficient SSAs! 
 
 ![Left: Some paths of the degradation process simulated using the more efficient SSA. Right: Estimated PMF of the degradation process based on $200$ realisations at time $t = 10$. Parameters: $n_0 = 20$, $k = 0.1$.](images/Figure2_degradation_example.png){#fig-more_efficient width=95%}
 
 ::: {.doit #eggen1 style="font-size:1.0em; font-family:mainfont;"} 
-Open the course [Github page](https://github.com/patterd2/MATH4411_Adv_Math_Bio) and try running the MATLAB script:  
+Open the course [Github page](https://github.com/AndrewLKrause/MATH4411_Adv_Math_Bio) and try running the MATLAB script:  
 `CH1_more_efficient_SSA_degradation.m`
 :::
 
@@ -455,7 +455,7 @@ Directly compute $\mathbb{P}[E_P < E_D]$ to show that the formula above holds.
 ![Sample paths of the production/degradation process generating using the more efficient SSA and compared to the deterministic mean; the deterministic mean was obtained by solving the deterministic model generated by the law of mass action. Parameters: $k_1 = 0.1$, $k_2 = 1$, $\nu = 1$, $A(0) = n_0 = 0$.](images/prod_deg_process.png){#fig-prod_deg width=60% fig-align="center"}
 
 ::: {.doit #eggen1 style="font-size:1.0em; font-family:mainfont;"}
-1. Open the course [Github page](https://github.com/patterd2/MATH4411_Adv_Math_Bio) and try running the MATLAB script: `CH1_production_degradation.m`
+1. Open the course [Github page](https://github.com/AndrewLKrause/MATH4411_Adv_Math_Bio) and try running the MATLAB script: `CH1_production_degradation.m`
 2. Use the law of mass action to derive a deterministic model for the production/degradation process and verify the formula for the deterministic mean in the code above.
 :::
 
@@ -596,7 +596,7 @@ and hence, for large times, the production/degradation process is approximately 
 ![Simulations of the production/degradation process starting with $A(0) = 0$ with the PMF estimated at different times and compared to the stationary distribution. Parameters:  $k_1 = 0.1$, $k_2 = 1$, $\nu = 1$, $A(0) = n_0 = 0$.](images/stationary_CME.png){#fig-CME width=100% fig-align="center"}
 
 ::: {.doit #eggen1 style="font-size:1.0em; font-family:mainfont;"}
-Open the course [Github page](https://github.com/patterd2/MATH4411_Adv_Math_Bio) and try playing with the MATLAB script:  
+Open the course [Github page](https://github.com/AndrewLKrause/MATH4411_Adv_Math_Bio) and try playing with the MATLAB script:  
 `CH1_production_degradation_CME.m`  
 Try varying the initial conditions and the time interval parameter $T$ to observe how the mean and skewness of the estimated PMF vary.
 :::
@@ -892,7 +892,7 @@ where $a(t) = A(t)/\nu$ is the concentration of $A$ molecules. We can solve this
 The right-hand panel of @fig-dimer_all shows the estimated PMF of the dimerisation process at $t = 100$ using $1,000$ sample paths of the process obtained via the more efficient SSA. The solid red line denoted by "analysis" in the legend is the stationary distribution of the process calculated from an analytic formula based on the calculations of the preceding section (see problem classes for more details!).
 
 ::: {.doit #eggen1 style="font-size:1.0em; font-family:mainfont;"}
-Open the course [Github page](https://github.com/patterd2/MATH4411_Adv_Math_Bio) and try playing with the MATLAB script:  
+Open the course [Github page](https://github.com/AndrewLKrause/MATH4411_Adv_Math_Bio) and try playing with the MATLAB script:  
 `CH1_dimerisation_process.m`  
 Try varying the parameters (time interval, initial conditions, reaction rates) to observe how the analysis presented above changes.
 :::
