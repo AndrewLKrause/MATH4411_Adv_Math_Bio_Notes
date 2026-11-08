@@ -196,7 +196,7 @@ $$
 and we have the usual intuitive interpretation of $p(x,t)$ as a proxy for the probability that $X(t)$ is near $x$ at time $t$, i.e.
 
 $$
-\mathbb{P}[X(t) \in [x,+dx]] \approx p(x,t) \, dx.
+\mathbb{P}[X(t) \in [x,x+dx]] \approx p(x,t) \, dx.
 $$
 
 We will show that $p(x,t)$ solves the linear second-order PDE:
